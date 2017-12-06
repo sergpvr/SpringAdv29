@@ -1,6 +1,8 @@
 <html>
 <head>
     <title>Auditoriums</title>
+    <link rel="stylesheet" type="text/css"
+          href="/spring-course-1.0-SNAPSHOT/resources/css/style.css" />
 </head>
 
 <body>

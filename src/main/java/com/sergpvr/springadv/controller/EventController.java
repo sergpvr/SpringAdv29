@@ -22,12 +22,12 @@ import java.util.stream.Collectors;
 public class EventController {
 
     @Autowired
-    EventService eventService;
+    private EventService eventService;
 
     @Autowired
-    AuditoriumService auditoriumService;
+    private AuditoriumService auditoriumService;
 
-    @RequestMapping(value = "/events", method = RequestMethod.GET,  headers="Accept=!application/pdf")
+    @RequestMapping(value = "/events", method = RequestMethod.GET, headers="Accept=text/html")
     public String init(@ModelAttribute("model") ModelMap model) {
         model.addAttribute("eventList", eventService.getAll());
         model.addAttribute("rateValues", Rate.values());

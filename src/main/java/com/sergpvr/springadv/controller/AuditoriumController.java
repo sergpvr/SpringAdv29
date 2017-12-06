@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AuditoriumController {
     @Autowired
-    AuditoriumService auditoriumService;
+    private AuditoriumService auditoriumService;
 
     @RequestMapping(value = "/auditoriums", method = RequestMethod.GET)
     public String init(@ModelAttribute("model") ModelMap model) {

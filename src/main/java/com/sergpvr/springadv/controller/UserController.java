@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @RequestMapping(value = "/users", method = RequestMethod.GET, headers="Accept=text/html")
     public String init(@ModelAttribute("model") ModelMap model) {
         model.addAttribute("userList", userService.getAll());
         return "users";
