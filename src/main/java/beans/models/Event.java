@@ -1,5 +1,12 @@
 package beans.models;
 
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
 
 /**
@@ -8,13 +15,20 @@ import java.time.LocalDateTime;
  * Date: 2/1/2016
  * Time: 7:42 PM
  */
+
+@XmlRootElement(name = "event")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Event {
 
     private long          id;
     private String        name;
     private Rate          rate;
     private double        basePrice;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTime;
+
+    @XmlElement(name = "auditorium")
     private Auditorium    auditorium;
 
     public Event() {

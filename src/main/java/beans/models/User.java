@@ -2,6 +2,9 @@ package beans.models;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDate;
 
 /**
@@ -10,6 +13,9 @@ import java.time.LocalDate;
  * Date: 2/1/2016
  * Time: 7:35 PM
  */
+
+@XmlRootElement(name = "user")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User {
 
     private long      id;
