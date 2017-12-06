@@ -6,7 +6,6 @@ import beans.models.Rate;
 import beans.services.AuditoriumService;
 import beans.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
@@ -28,7 +26,7 @@ public class EventController {
     private AuditoriumService auditoriumService;
 
     @RequestMapping(value = "/events", method = RequestMethod.GET, headers="Accept=text/html")
-    public String init(@ModelAttribute("model") ModelMap model) {
+    public String events(@ModelAttribute("model") ModelMap model) {
         model.addAttribute("eventList", eventService.getAll());
         model.addAttribute("rateValues", Rate.values());
         model.addAttribute("auditoriumList", auditoriumService.getAuditoriums().stream().map(Auditorium::getName).collect(Collectors.toList()));

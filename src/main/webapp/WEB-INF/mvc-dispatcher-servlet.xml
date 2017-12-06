@@ -52,4 +52,16 @@
         </property>
     </bean>
 
+    <bean id="simpleMappingExceptionResolver" class=
+            "org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="exceptionView"/>
+        <property name="exceptionAttribute" value="exception"/>
+
+    </bean>
+
+    <!-- File Upload bean config
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10000000"/>
+    </bean>-->
+
 </beans>
