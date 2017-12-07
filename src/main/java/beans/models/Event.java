@@ -28,7 +28,7 @@ public class Event {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTime;
 
-    @XmlElement(name = "auditorium")
+    @XmlElement(name = "auditorium" )
     private Auditorium    auditorium;
 
     public Event() {
