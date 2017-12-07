@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<group>
+    <events>
+        <id>2</id>
+        <name>My First Event</name>
+        <rate>LOW</rate>
+        <basePrice>100.23</basePrice>
+        <dateTime>2017-12-12T15:40</dateTime>
+        <auditorium>
+            <id>0</id>
+            <name>Blue hall</name>
+            <seatsNumber>0</seatsNumber>
+        </auditorium>
+    </events>
+    <events>
+        <id>3</id>
+        <name>My Second Event</name>
+        <rate>HIGH</rate>
+        <basePrice>125.4</basePrice>
+        <dateTime>2017-12-14T11:10</dateTime>
+        <auditorium>
+            <id>0</id>
+            <name>Red hall</name>
+            <seatsNumber>0</seatsNumber>
+        </auditorium>
+    </events>
+    <users>
+        <id>23</id>
+        <email>serhiy@doprocess.com</email>
+        <name>Serhiy</name>
+        <birthday>1974-07-10</birthday>
+    </users>
+    <users>
+        <id>24</id>
+        <email>oleksii@doprocess.com</email>
+        <name>Oleksii</name>
+        <birthday>1982-04-23</birthday>
+    </users>
+</group>

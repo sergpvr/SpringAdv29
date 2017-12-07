@@ -1,10 +1,12 @@
 package beans.models;
 
+import com.sergpvr.springadv.converter.LocalDateAdapter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
 /**
@@ -22,6 +24,7 @@ public class User {
     private String    email;
     private String    name;
 
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate birthday;
 

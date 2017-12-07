@@ -1,12 +1,15 @@
 package beans.models;
 
 
+import com.sergpvr.springadv.converter.LocalDateAdapter;
+import com.sergpvr.springadv.converter.LocalDateTimeAdapter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDateTime;
 
 /**
@@ -25,10 +28,11 @@ public class Event {
     private Rate          rate;
     private double        basePrice;
 
+    @XmlJavaTypeAdapter(value = LocalDateTimeAdapter.class)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTime;
 
-    @XmlElement(name = "auditorium")
+    @XmlElement(name = "auditorium" )
     private Auditorium    auditorium;
 
     public Event() {
