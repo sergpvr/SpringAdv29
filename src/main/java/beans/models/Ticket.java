@@ -68,6 +68,10 @@ public class Ticket {
         return seats;
     }
 
+    public String getPlace() {
+        return (event != null && event.getAuditorium() != null) ? event.getAuditorium().getName() : "";
+    }
+
     public void setSeats(String seats) {
         this.seats = seats;
     }

@@ -38,8 +38,8 @@
     <br/>
     <table class="datatable" border="1">
         <tr>
-            <th>Id</th>
             <th>EventName</th>
+            <th>Place</th>
             <th>DateTime</th>
             <th>Seats</th>
             <th>UserName</th>
@@ -47,8 +47,8 @@
         </tr>
         <#list model["ticketList"] as ticket>
         <tr>
-            <td>${ticket.id}</td>
             <td>${(ticket.event.name)!}</td>
+            <td>${(ticket.event.auditorium.name)!}</td>
             <td>${(ticket.dateTime)!}</td>
             <td>${(ticket.seats)!}</td>
             <td>${(ticket.user.name)!} ${(ticket.user.email)!}</td>

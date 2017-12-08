@@ -7,5 +7,6 @@
 
     <bean id="pdfEventsView"  class="com.sergpvr.springadv.view.PdfEventsView"/>
     <bean id="pdfUsersView"   class="com.sergpvr.springadv.view.PdfUsersView"/>
+    <bean id="pdfTicketsView"   class="com.sergpvr.springadv.view.PdfTicketsView"/>
 
 </beans>

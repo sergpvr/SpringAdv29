@@ -1,7 +1,6 @@
 package com.sergpvr.springadv.controller;
 
 import beans.models.Event;
-import beans.models.Rate;
 import beans.models.Ticket;
 import beans.models.User;
 import beans.services.AuditoriumService;
@@ -16,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class BookingController {
@@ -33,13 +34,16 @@ public class BookingController {
     public String booking(@ModelAttribute("model") ModelMap model) {
         model.addAttribute("userList", userService.getAll());
         model.addAttribute("eventList", eventService.getAll());
-        model.addAttribute("ticketList", bookingService.getAllTickets());
+        List<Ticket> tickets = bookingService.getAllTickets().stream()
+                .sorted(Comparator.comparing(Ticket::getDateTime).thenComparing(Ticket::getPlace))
+                .collect(Collectors.toList());
+        model.addAttribute("ticketList", tickets);
         return "booking";
     }
 
 
     @RequestMapping(value = "/bookTickets", method = RequestMethod.POST)
-    public String bookTickets(@RequestParam("userId") String userId, @RequestParam("eventId")String eventId,
+    public String bookTickets(@RequestParam("userId") String userId, @RequestParam("eventId") String eventId,
                               @RequestParam("seats") String seats) {
         User user = userService.getById(Long.valueOf(userId));
         Event event = eventService.getById(Long.valueOf(eventId));
@@ -50,7 +54,7 @@ public class BookingController {
         ticket.setUser(user);
         ticket.setDateTime(ticket.getEvent().getDateTime());
         ticket.setPrice(bookingService.getTicketPrice(ticket.getEvent().getName(), ticket.getEvent().getAuditorium().getName(),
-                ticket.getDateTime(), ticket.getSeatsList(),  user));
+                ticket.getDateTime(), ticket.getSeatsList(), user));
         //
 
         bookingService.bookTicket(user, ticket);
