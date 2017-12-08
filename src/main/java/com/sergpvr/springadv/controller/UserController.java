@@ -5,10 +5,16 @@ import beans.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -35,4 +41,24 @@ public class UserController {
 
         return "redirect:/users";
     }
+
+    @RequestMapping(value = {"/getUsersByParam/", "/getUsersByParam"}, method = RequestMethod.GET)
+    public String getUsersByParam(@ModelAttribute("model") ModelMap model,
+                                  @RequestParam Map<String,String> allRequestParams) {
+
+        List<User> users = new ArrayList<>();
+
+        if(allRequestParams.containsKey("name")) {
+            users.addAll(userService.getUsersByName(allRequestParams.get("name")));
+        } else if (allRequestParams.containsKey("email")) {
+            User user = userService.getUserByEmail(allRequestParams.get("email"));
+            if (user != null) {
+                users.add(user);
+            }
+        }
+
+        model.addAttribute("userList", users);
+        return "users";
+    }
+
 }
