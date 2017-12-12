@@ -10,7 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <spring.ver>4.2.4.RELEASE</spring.ver>
+        <spring.ver>4.3.9.RELEASE</spring.ver>
         <spring.sec.ver>4.2.3.RELEASE</spring.sec.ver>
         <aspectj.ver>1.8.8</aspectj.ver>
         <hibernate.ver>5.1.0.Final</hibernate.ver>
@@ -112,7 +112,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.9</version>
+            <version>4.12</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>

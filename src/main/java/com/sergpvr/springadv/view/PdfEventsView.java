@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
-public class PdfEventsView  extends AbstractPdfView {
+public class PdfEventsView extends AbstractPdfView {
 
     @Override
     protected void buildPdfDocument(
@@ -56,7 +56,7 @@ public class PdfEventsView  extends AbstractPdfView {
             table.addCell(event.getName());
             table.addCell(event.getRate().toString());
             table.addCell(String.valueOf(event.getBasePrice()));
-            table.addCell(event.getDateTime()== null? "" : event.getDateTime().toString());
+            table.addCell(event.getDateTime() == null ? "" : event.getDateTime().toString());
             table.addCell(event.getAuditorium() == null ? "" : event.getAuditorium().getName());
         }
         document.add(table);
