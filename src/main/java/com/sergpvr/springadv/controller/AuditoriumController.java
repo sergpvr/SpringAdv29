@@ -14,7 +14,7 @@ public class AuditoriumController {
     private AuditoriumService auditoriumService;
 
     @RequestMapping(value = "/auditoriums", method = RequestMethod.GET)
-    public String init(@ModelAttribute("model") ModelMap model) {
+    public String auditoriums(@ModelAttribute("model") ModelMap model) {
         model.addAttribute("auditoriumList", auditoriumService.getAuditoriums());
         return "auditoriums";
     }

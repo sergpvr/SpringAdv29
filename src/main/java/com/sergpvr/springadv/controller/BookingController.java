@@ -30,20 +30,20 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String booking(@ModelAttribute("model") ModelMap model) {
+    @RequestMapping(value = "tickets", method = RequestMethod.GET)
+    public String tickets(@ModelAttribute("model") ModelMap model) {
         model.addAttribute("userList", userService.getAll());
         model.addAttribute("eventList", eventService.getAll());
         List<Ticket> tickets = bookingService.getAllTickets().stream()
                 .sorted(Comparator.comparing(Ticket::getDateTime).thenComparing(Ticket::getPlace))
                 .collect(Collectors.toList());
         model.addAttribute("ticketList", tickets);
-        return "booking";
+        return "tickets";
     }
 
 
-    @RequestMapping(value = "/bookTickets", method = RequestMethod.POST)
-    public String bookTickets(@RequestParam("userId") String userId, @RequestParam("eventId") String eventId,
+    @RequestMapping(value = "/addTickets", method = RequestMethod.POST)
+    public String addTickets(@RequestParam("userId") String userId, @RequestParam("eventId") String eventId,
                               @RequestParam("seats") String seats) {
         User user = userService.getById(Long.valueOf(userId));
         Event event = eventService.getById(Long.valueOf(eventId));
@@ -59,6 +59,6 @@ public class BookingController {
 
         bookingService.bookTicket(user, ticket);
 
-        return "redirect:/";
+        return "redirect:/tickets";
     }
 }

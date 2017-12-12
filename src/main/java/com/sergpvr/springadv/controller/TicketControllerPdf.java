@@ -17,13 +17,17 @@ public class TicketControllerPdf {
     @Autowired
     private BookingService bookingService;
 
-    @RequestMapping(value = "/ticket.pdf", method = RequestMethod.GET, headers = "Accept=application/pdf")
-    ModelAndView generatePdf() {
-
+    @RequestMapping(value = "/tickets", method = RequestMethod.GET, headers = "Accept=application/pdf")
+    public ModelAndView generatePdf() {
         List<Ticket> tickets = bookingService.getAllTickets().stream()
                 .sorted(Comparator.comparing(Ticket::getDateTime).thenComparing(Ticket::getPlace)
                 ).collect(Collectors.toList());
 
         return new ModelAndView("pdfTicketsView", "ticketList", tickets);
+    }
+
+    @RequestMapping(value = "/tickets.pdf", method = RequestMethod.GET)
+    ModelAndView generatePdf2() {
+        return generatePdf();
     }
 }

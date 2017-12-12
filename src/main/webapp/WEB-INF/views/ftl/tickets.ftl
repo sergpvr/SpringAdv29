@@ -14,7 +14,7 @@
 
     <fieldset>
         <legend>Book Tickets</legend>
-        <form name="booking" action="bookTickets" method="post">
+        <form name="booking" action="addTickets" method="post">
             User : <select name="userId">
                     <#list  model["userList"] as user>
                     <option value="${user.id}">${user.name}  ${(user.email)!}</option>

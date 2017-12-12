@@ -8,12 +8,14 @@
 
 
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/add*" access="ROLE_USER"/>
-        <intercept-url pattern="/delete/*" access="ROLE_ADMIN"/>
-        <!--<form-login login-page="/login.ftl" default-target-url="/index" authentication-failure-url="/login.ftl?error=true"/>
-        <logout logout-url="/logout" logout-success-url="/index"/>
+        <intercept-url pattern="/add*" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/delete/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/data*" access="hasRole('ROLE_ADMIN')"/>
+        <form-login login-page="/login" default-target-url="/tickets.ftl" authentication-failure-url="/login?error=true"/>
+        <!--<logout logout-url="/logout" logout-success-url="/index"/>
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
         <remember-me/>-->
+        <csrf disabled="true"/>
     </http>
 
     <authentication-manager>
