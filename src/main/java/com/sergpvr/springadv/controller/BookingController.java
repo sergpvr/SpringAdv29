@@ -32,7 +32,7 @@ public class BookingController {
     private BookingService bookingService;
 
     @RequestMapping(value = "tickets", method = RequestMethod.GET)
-    public String tickets(@ModelAttribute("model") ModelMap model) {
+    public String getTickets(@ModelAttribute("model") ModelMap model) {
 
         List<User> users = userService.getAll();
         if(CollectionUtils.isEmpty(users)) {

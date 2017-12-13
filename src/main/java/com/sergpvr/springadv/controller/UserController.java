@@ -23,7 +23,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/users", method = RequestMethod.GET, headers="Accept=text/html")
-    public String users(@ModelAttribute("model") ModelMap model) {
+    public String getUsers(@ModelAttribute("model") ModelMap model) {
         model.addAttribute("userList", userService.getAll());
         return "users";
     }

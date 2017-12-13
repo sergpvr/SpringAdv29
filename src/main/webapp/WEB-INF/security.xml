@@ -8,14 +8,20 @@
 
 
     <http auto-config="true" use-expressions="true">
-        <!--<intercept-url pattern="/**" access="hasRole('REGISTERED_USER')"/>-->
+        <access-denied-handler error-page="/403page" />
         <intercept-url pattern="/add*" access="hasRole('ADMIN') or hasRole('BOOKING_MANAGER')"/>
-        <intercept-url pattern="/delete/*" access="hasRole('ADMIN')"/>
-        <intercept-url pattern="/data*" access="hasRole('BOOKING_MANAGER')"/>
-        <form-login login-page="/login" default-target-url="/tickets.ftl" authentication-failure-url="/login?error=true"/>
+        <intercept-url pattern="/delete*" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/data*" access="hasRole('ADMIN') or hasRole('BOOKING_MANAGER')"/>
+        <intercept-url pattern="/tickets*" access="hasRole('REGISTERED_USER')"/>
+        <intercept-url pattern="/users*" access="hasRole('REGISTERED_USER')"/>
+        <intercept-url pattern="/events*" access="hasRole('REGISTERED_USER')"/>
+        <intercept-url pattern="/auditoriums*" access="hasRole('REGISTERED_USER')"/>
+        <form-login login-page="/login" default-target-url="/tickets.ftl" authentication-failure-url="/login?authfailed"/>
         <!--<logout logout-url="/logout" logout-success-url="/index"/>
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
         <remember-me/>-->
+        <logout logout-url="/logout" logout-success-url="/login?logout"
+                         invalidate-session="true"  />
         <csrf disabled="true"/>
     </http>
 

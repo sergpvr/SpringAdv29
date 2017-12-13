@@ -26,7 +26,7 @@ public class EventController {
     private AuditoriumService auditoriumService;
 
     @RequestMapping(value = "/events", method = RequestMethod.GET, headers="Accept=text/html")
-    public String events(@ModelAttribute("model") ModelMap model) {
+    public String getEvents(@ModelAttribute("model") ModelMap model) {
         model.addAttribute("eventList", eventService.getAll());
         model.addAttribute("rateValues", Rate.values());
         model.addAttribute("auditoriumList", auditoriumService.getAuditoriums().stream().map(Auditorium::getName).collect(Collectors.toList()));
@@ -49,7 +49,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/deleteEvent", method = RequestMethod.GET)
-    public String deleteUser(@RequestParam("eventId") long eventId) {
+    public String deleteEvent(@RequestParam("eventId") long eventId) {
         eventService.remove(eventService.getById(eventId));
 
         return "redirect:/events";
