@@ -29,11 +29,14 @@
         <email>serhiy@doprocess.com</email>
         <name>Serhiy</name>
         <birthday>1974-07-10</birthday>
+        <password>1234</password>
+        <roles>ADMIN,REGISTERED_USER</roles>
     </users>
     <users>
         <id>24</id>
         <email>oleksii@doprocess.com</email>
         <name>Oleksii</name>
         <birthday>1982-04-23</birthday>
+        <roles>REGISTERED_USER,BOOKING_MANAGER</roles>       
     </users>
 </group>

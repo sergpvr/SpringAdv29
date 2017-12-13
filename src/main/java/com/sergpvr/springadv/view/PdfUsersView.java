@@ -28,19 +28,22 @@ public class PdfUsersView extends AbstractPdfView {
         document.add(new Paragraph("#Users: (PDF created by Serhiy Povoroznyuk)"));
         document.add(new Paragraph(" "));
 
-        PdfPTable table = new PdfPTable(4);
+        PdfPTable table = new PdfPTable(5);
         PdfPCell header1 = new PdfPCell(new Phrase("Id"));
         PdfPCell header2 = new PdfPCell(new Phrase("Email"));
         PdfPCell header3 = new PdfPCell(new Phrase("Name"));
         PdfPCell header4 = new PdfPCell(new Phrase("Birthday"));
+        PdfPCell header5 = new PdfPCell(new Phrase("Roles"));
         header1.setHorizontalAlignment(Element.ALIGN_LEFT);
         header2.setHorizontalAlignment(Element.ALIGN_LEFT);
         header3.setHorizontalAlignment(Element.ALIGN_LEFT);
         header4.setHorizontalAlignment(Element.ALIGN_LEFT);
+        header5.setHorizontalAlignment(Element.ALIGN_LEFT);
         table.addCell(header1);
         table.addCell(header2);
         table.addCell(header3);
         table.addCell(header4);
+        table.addCell(header5);
 
         //Get data from model
         List<User> users = (List<User>) model.get("userList");
@@ -49,6 +52,7 @@ public class PdfUsersView extends AbstractPdfView {
             table.addCell(user.getEmail());
             table.addCell(user.getName());
             table.addCell(user.getBirthday() == null ? "" : user.getBirthday().toString());
+            table.addCell(user.getRoles());
         }
         document.add(table);
     }

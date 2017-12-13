@@ -33,19 +33,21 @@ public class User {
     public User() {
     }
 
-    public User(long id, String email, String name, LocalDate birthday) {
+    public User(long id, String email, String name, LocalDate birthday, String roles, String password) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.birthday = birthday;
+        this.roles = roles;
+        this.password = password;
     }
 
-    public User(String email, String name, LocalDate birthday) {
-        this(-1, email, name, birthday);
+    public User(String email, String name, LocalDate birthday, String roles, String password) {
+        this(-1, email, name, birthday, roles, password);
     }
 
     public User withId(long id) {
-        return new User(id, email, name, birthday);
+        return new User(id, email, name, birthday, roles, password);
     }
 
     public long getId() {
@@ -115,6 +117,7 @@ public class User {
                ", email='" + email + '\'' +
                ", name='" + name + '\'' +
                ", birthday=" + birthday +
+                ", roles=" + roles +
                '}';
     }
 
