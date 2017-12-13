@@ -23,6 +23,8 @@ public class User {
     private long      id;
     private String    email;
     private String    name;
+    private String    password;
+    private String    roles;
 
     @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -114,5 +116,21 @@ public class User {
                ", name='" + name + '\'' +
                ", birthday=" + birthday +
                '}';
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 }

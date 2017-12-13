@@ -10,6 +10,7 @@ import beans.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,8 +33,17 @@ public class BookingController {
 
     @RequestMapping(value = "tickets", method = RequestMethod.GET)
     public String tickets(@ModelAttribute("model") ModelMap model) {
-        model.addAttribute("userList", userService.getAll());
-        model.addAttribute("eventList", eventService.getAll());
+
+        List<User> users = userService.getAll();
+        if(CollectionUtils.isEmpty(users)) {
+            return "redirect:/users";
+        }
+        List<Event> events = eventService.getAll();
+        if(CollectionUtils.isEmpty(events)) {
+            return "redirect:/events";
+        }
+        model.addAttribute("userList", users);
+        model.addAttribute("eventList", events);
         List<Ticket> tickets = bookingService.getAllTickets().stream()
                 .sorted(Comparator.comparing(Ticket::getDateTime).thenComparing(Ticket::getPlace))
                 .collect(Collectors.toList());
