@@ -8,8 +8,9 @@
 
 
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/add*" access="hasAnyRole('ROLE_ADMIN', 'BOOKING_MANAGER')"/>
-        <intercept-url pattern="/delete/*" access="hasRole('ROLE_ADMIN')"/>
+        <!--<intercept-url pattern="/**" access="hasRole('REGISTERED_USER')"/>-->
+        <intercept-url pattern="/add*" access="hasRole('ADMIN') or hasRole('BOOKING_MANAGER')"/>
+        <intercept-url pattern="/delete/*" access="hasRole('ADMIN')"/>
         <intercept-url pattern="/data*" access="hasRole('BOOKING_MANAGER')"/>
         <form-login login-page="/login" default-target-url="/tickets.ftl" authentication-failure-url="/login?error=true"/>
         <!--<logout logout-url="/logout" logout-success-url="/index"/>
@@ -21,9 +22,9 @@
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="admin" password="pass" authorities="ROLE_ADMIN,REGISTERED_USER"/>
-                <user name="user1" password="1111" authorities="REGISTERED_USER"/>
-                <user name="user2" password="2222" disabled="false" authorities="REGISTERED_USER,BOOKING_MANAGER"/>
+                <user name="admin" password="pass" authorities="ROLE_ADMIN,ROLE_REGISTERED_USER"/>
+                <user name="user1" password="1111" authorities="ROLE_REGISTERED_USER"/>
+                <user name="user2" password="2222" disabled="false" authorities="ROLE_REGISTERED_USER,ROLE_BOOKING_MANAGER"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>
