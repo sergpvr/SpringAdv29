@@ -41,7 +41,8 @@
         <email>serhiy@doprocess.com</email>
         <name>serhiy</name>
         <birthday>1974-07-10</birthday>
-        <password>1234</password>
+        <!--1234-->
+        <password>$2a$10$S.jSHtGFinhNe.SaKrbEoOmExj97GUcUIsmzk/btqMHXC07Vl79pG</password>
         <roles>ADMIN,REGISTERED_USER,BOOKING_MANAGER</roles>
     </users>
     <users>
@@ -49,7 +50,8 @@
         <email>oleksii@doprocess.com</email>
         <name>oleksii</name>
         <birthday>1982-04-23</birthday>
-        <password>5678</password>
+        <!--5678-->
+        <password>$2a$10$RaEpx/hVNm1HEL1X4AZ9seO0OIDspF/OEl41JFvUL62SpKHtecu7e</password>
         <roles>REGISTERED_USER,BOOKING_MANAGER</roles>       
     </users>
         <users>
@@ -57,7 +59,8 @@
         <email>oleksandr@doprocess.com</email>
         <name>oleksandr</name>
         <birthday>1985-09-11</birthday>
-        <password>qwerty</password>
+        <!--qwerty-->
+        <password>$2a$10$OamW1mZojRSe80tSlEzH0u.64dux03SyRObZb1TugfB6IpaqU0x.q</password>
         <roles>REGISTERED_USER</roles>       
     </users>
 </group>

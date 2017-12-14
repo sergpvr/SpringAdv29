@@ -16,9 +16,12 @@
         <intercept-url pattern="/events*" access="hasRole('REGISTERED_USER')"/>
         <intercept-url pattern="/auditoriums*" access="hasRole('REGISTERED_USER')"/>
         <form-login login-page="/login" default-target-url="/tickets" authentication-failure-url="/login?authfailed"/>
-        <!--<logout logout-url="/logout" logout-success-url="/index"/>
-        <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
-        <remember-me/>-->
+
+        <remember-me
+                token-validity-seconds="1209600"
+                remember-me-parameter="remember-me"
+                user-service-ref="springAdv29UserDetailsService"/>
+
         <logout logout-url="/logout" logout-success-url="/login?logout"
                          invalidate-session="true"  />
         <csrf disabled="true"/>
@@ -26,6 +29,9 @@
 
     <beans:bean id="springAdv29UserDetailsService" class=
             "com.sergpvr.springadv.service.SpringAdv29UserDetailsService" />
+
+    <beans:bean id="encoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
     <authentication-manager>
         <authentication-provider>
@@ -35,8 +41,7 @@
         </authentication-provider>
         <authentication-provider
                 user-service-ref="springAdv29UserDetailsService" >
-            <!--<password-encoder ref="passwordEncoder">
-            </password-encoder>-->
+            <password-encoder ref="encoder" />
         </authentication-provider>
     </authentication-manager>
 </beans:beans>

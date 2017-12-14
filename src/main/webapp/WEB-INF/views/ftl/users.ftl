@@ -20,7 +20,7 @@
                     <tr><td>Email : </td><td><input type="text" name="email" /></td></tr>
                     <tr><td>Password : </td><td><input type="password" name="password" /></td></tr>
                     <tr><td>Birthday : </td><td><input type="date" name="birthday" /></td></tr>
-                    <tr><td>Roles : </td><td><input type="text" name="roles"  value="REGISTERED_USER" placeholder="ADMIN, BOOKING_MANAGER, ..."/></td></tr>
+                    <tr><td>Roles : </td><td><input type="text" name="roles"  value="REGISTERED_USER" placeholder="REGISTERED_USER,BOOKING_MANAGER,ADMIN"/></td></tr>
                     <tr><td colspan="2" align="right"><input type="submit" value="   Save   " /></td></tr>
                 </table>
             </form>
