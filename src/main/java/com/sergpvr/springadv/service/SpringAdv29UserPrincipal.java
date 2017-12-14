@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+
 public class SpringAdv29UserPrincipal implements UserDetails {
     private User user;
 
@@ -21,11 +22,11 @@ public class SpringAdv29UserPrincipal implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        String [] roles = user.getRoles().split(",");
+        String[] roles = user.getRoles().split(",");
         Arrays.asList(roles).forEach(role -> {
             String trimed = StringUtils.trimWhitespace(role);
-            if(StringUtils.hasLength(trimed))
-            new SimpleGrantedAuthority("ROLE_" + StringUtils.trimWhitespace(role));
+            if (StringUtils.hasLength(trimed))
+                grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + StringUtils.trimWhitespace(role)));
         });
         return grantedAuthorities;
     }

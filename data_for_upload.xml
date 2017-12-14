@@ -24,19 +24,40 @@
             <seatsNumber>0</seatsNumber>
         </auditorium>
     </events>
+    <events>
+        <id>4</id>
+        <name>My Third Event</name>
+        <rate>HIGH</rate>
+        <basePrice>83.6</basePrice>
+        <dateTime>2017-12-14T18:00</dateTime>
+        <auditorium>
+            <id>0</id>
+            <name>Yellow hall</name>
+            <seatsNumber>0</seatsNumber>
+        </auditorium>
+    </events>
     <users>
         <id>23</id>
         <email>serhiy@doprocess.com</email>
-        <name>Serhiy</name>
+        <name>serhiy</name>
         <birthday>1974-07-10</birthday>
         <password>1234</password>
-        <roles>ADMIN,REGISTERED_USER</roles>
+        <roles>ADMIN,REGISTERED_USER,BOOKING_MANAGER</roles>
     </users>
     <users>
         <id>24</id>
         <email>oleksii@doprocess.com</email>
-        <name>Oleksii</name>
+        <name>oleksii</name>
         <birthday>1982-04-23</birthday>
+        <password>5678</password>
         <roles>REGISTERED_USER,BOOKING_MANAGER</roles>       
+    </users>
+        <users>
+        <id>25</id>
+        <email>oleksandr@doprocess.com</email>
+        <name>oleksandr</name>
+        <birthday>1985-09-11</birthday>
+        <password>qwerty</password>
+        <roles>REGISTERED_USER</roles>       
     </users>
 </group>
