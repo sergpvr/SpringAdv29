@@ -35,6 +35,7 @@
                 <th>Email</th>
                 <th>Birthday</th>
                 <th>Roles</th>
+                <th>Amount</th>
                 <th>Action</th>
             </tr>
             <#list model["userList"] as user>
@@ -44,6 +45,7 @@
                 <td>${user.email}</td>
                 <td>${(user.birthday)!}</td>
                 <td>${(user.roles)!}</td>
+                <td>${(user.userAccount.amount)!}</td>
                 <td><a href="deleteUser?userId=${user.id}">delete</a></td>
             </tr>
             </#list>

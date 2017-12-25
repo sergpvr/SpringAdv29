@@ -3,6 +3,7 @@ package beans.models;
 import com.sergpvr.springadv.converter.LocalDateAdapter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -25,6 +26,9 @@ public class User {
     private String    name;
     private String    password;
     private String    roles;
+
+    @Transient
+    private UserAccount userAccount;
 
     @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -135,5 +139,13 @@ public class User {
 
     public void setRoles(String roles) {
         this.roles = roles;
+    }
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
 }

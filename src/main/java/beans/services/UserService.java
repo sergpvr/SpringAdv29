@@ -2,6 +2,7 @@ package beans.services;
 
 import beans.models.Ticket;
 import beans.models.User;
+import beans.models.UserAccount;
 
 import java.util.List;
 
@@ -26,4 +27,8 @@ public interface UserService {
     List<User> getAll();
 
     List<Ticket> getBookedTickets();
+
+    void refillAccount(long userId, double amount);
+
+    List<UserAccount> getUserAccounts();
 }

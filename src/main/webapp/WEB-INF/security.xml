@@ -10,6 +10,7 @@
         <access-denied-handler error-page="/403page" />
         <intercept-url pattern="/add*" access="hasRole('BOOKING_MANAGER')"/>
         <intercept-url pattern="/delete*" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/refill*" access="hasRole('BOOKING_MANAGER')"/>
         <intercept-url pattern="/data*" access="hasRole('BOOKING_MANAGER')"/>
         <intercept-url pattern="/tickets*" access="hasRole('REGISTERED_USER')"/>
         <intercept-url pattern="/users*" access="hasRole('REGISTERED_USER')"/>

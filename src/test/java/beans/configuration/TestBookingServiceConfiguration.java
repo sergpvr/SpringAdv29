@@ -1,9 +1,6 @@
 package beans.configuration;
 
-import beans.daos.AuditoriumDAO;
-import beans.daos.BookingDAO;
-import beans.daos.EventDAO;
-import beans.daos.UserDAO;
+import beans.daos.*;
 import beans.daos.mocks.*;
 import beans.models.*;
 import beans.services.*;
@@ -129,8 +126,13 @@ public class TestBookingServiceConfiguration {
     }
 
     @Bean
+    public UserAccountDAO userAccountDAOMock() {
+        return null;
+    }
+
+    @Bean
     public UserService userServiceImpl() {
-        return new UserServiceImpl(userDAOMock());
+        return new UserServiceImpl(userDAOMock(), userAccountDAOMock());
     }
 
     @Bean(name = "testBookingServiceImpl")

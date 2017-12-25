@@ -1,8 +1,10 @@
 package beans.services;
 
+import beans.daos.UserAccountDAO;
 import beans.daos.UserDAO;
 import beans.models.Ticket;
 import beans.models.User;
+import beans.models.UserAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,10 +23,13 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserDAO userDAO;
+    private final UserAccountDAO userAccountDAO;
 
     @Autowired
-    public UserServiceImpl(@Qualifier("userDAO") UserDAO userDAO) {
+    public UserServiceImpl(@Qualifier("userDAO") UserDAO userDAO,
+                           @Qualifier("userAccountDAO") UserAccountDAO userAccountDAO) {
         this.userDAO = userDAO;
+        this.userAccountDAO = userAccountDAO;
     }
 
     public User register(User user) {
@@ -54,5 +59,22 @@ public class UserServiceImpl implements UserService {
 
     public List<Ticket> getBookedTickets() {
         throw new UnsupportedOperationException("not implemented yet");
+    }
+
+    @Override
+    public void refillAccount(long userId, double amount) {
+        UserAccount userAccount = userAccountDAO.getByUserId(userId);
+        if(userAccount == null) {
+            userAccount = userAccountDAO.create(new UserAccount(userId, amount));
+        } else {
+            userAccount.setAccount(userAccount.getAccount() + amount);
+            userAccountDAO.update(userAccount);
+        }
+        userDAO.get(userId).setUserAccount(userAccount);
+    }
+
+    @Override
+    public List<UserAccount> getUserAccounts() {
+        return userAccountDAO.getAll();
     }
 }

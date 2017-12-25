@@ -28,6 +28,7 @@ public class UserController {
     @RequestMapping(value = "/users", method = RequestMethod.GET, headers="Accept=text/html")
     public String getUsers(@ModelAttribute("model") ModelMap model) {
         model.addAttribute("userList", userService.getAll());
+        //model.addAttribute("userAccounts", userService.getUserAccounts());
         return "users";
     }
 
@@ -64,5 +65,13 @@ public class UserController {
         model.addAttribute("userList", users);
         return "users";
     }
+
+    @RequestMapping(value = "/refillAccount", method = RequestMethod.POST)
+    public String refillAccount(@RequestParam("userId") long userId, @RequestParam("amount") double amount) {
+        userService.refillAccount(userId, amount);
+
+        return "redirect:/users";
+    }
+
 
 }
