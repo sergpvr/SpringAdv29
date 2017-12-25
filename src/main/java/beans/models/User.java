@@ -26,8 +26,6 @@ public class User {
     private String    name;
     private String    password;
     private String    roles;
-
-    @Transient
     private UserAccount userAccount;
 
     @XmlJavaTypeAdapter(value = LocalDateAdapter.class)

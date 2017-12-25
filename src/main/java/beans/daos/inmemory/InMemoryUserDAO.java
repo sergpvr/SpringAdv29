@@ -58,6 +58,11 @@ public class InMemoryUserDAO implements UserDAO {
         return db.get(id);
     }
 
+    @Override
+    public User update(User user) {
+        return null;
+    }
+
     public User getByEmail(String email) {
         return dbEmailIndex.get(email);
     }

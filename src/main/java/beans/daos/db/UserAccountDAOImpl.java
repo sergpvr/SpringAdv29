@@ -42,8 +42,8 @@ public class UserAccountDAOImpl extends AbstractDAO implements UserAccountDAO {
     }
 
     @Override
-    public UserAccount update(UserAccount UserAccount) {
-        return ((UserAccount) getCurrentSession().merge(UserAccount));
+    public UserAccount update(UserAccount userAccount) {
+        return ((UserAccount) getCurrentSession().merge(userAccount));
     }
 
     @Override

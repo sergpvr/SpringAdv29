@@ -45,11 +45,30 @@
                 <td>${user.email}</td>
                 <td>${(user.birthday)!}</td>
                 <td>${(user.roles)!}</td>
-                <td>${(user.userAccount.amount)!}</td>
+                <td>${(user.userAccount.account)!}</td>
                 <td><a href="deleteUser?userId=${user.id}">delete</a></td>
             </tr>
             </#list>
         </table>
+
+    <fieldset>
+        <legend> Refill account </legend>
+        <form name="account" action="refillAccount" method="post">
+            <table>
+                <tr><td>User : </td>
+                    <td>
+                        <select name="userId">
+                            <#list  model["userList"] as user>
+                            <option value="${user.id}">${user.name}  ${(user.email)!}</option>
+                            </#list>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td>Amount : </td><td><input type="number" placeholder="0.0" step="0.01" min="0" max="10000" name="amount" /></td></tr>
+                <tr><td colspan="2" align="right"><input type="submit" value="   Refill   " /></td></tr>
+            </table>
+        </form>
+    </fieldset>
 
     </div>
 </body>

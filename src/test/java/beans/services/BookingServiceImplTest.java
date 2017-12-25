@@ -4,10 +4,7 @@ import beans.configuration.AppConfiguration;
 import beans.configuration.TestBookingServiceConfiguration;
 import beans.configuration.db.DataSourceConfiguration;
 import beans.configuration.db.DbSessionFactory;
-import beans.daos.mocks.BookingDAOBookingMock;
-import beans.daos.mocks.DBAuditoriumDAOMock;
-import beans.daos.mocks.EventDAOMock;
-import beans.daos.mocks.UserDAOMock;
+import beans.daos.mocks.*;
 import beans.models.Event;
 import beans.models.Ticket;
 import beans.models.User;
@@ -59,6 +56,8 @@ public class BookingServiceImplTest {
     private EventDAOMock          eventDAOMock;
     @Autowired
     private UserDAOMock           userDAOMock;
+    //@Autowired
+    //private UserAccountDAOMock userAccountDAOMock;
     @Autowired
     private DBAuditoriumDAOMock   auditoriumDAOMock;
 
@@ -66,6 +65,7 @@ public class BookingServiceImplTest {
     public void init() {
         auditoriumDAOMock.init();
         userDAOMock.init();
+        //userAccountDAOMock.init();
         eventDAOMock.init();
         bookingDAOBookingMock.init();
     }
@@ -74,6 +74,7 @@ public class BookingServiceImplTest {
     public void cleanup() {
         auditoriumDAOMock.cleanup();
         userDAOMock.cleanup();
+        //userAccountDAOMock.cleanup();
         eventDAOMock.cleanup();
         bookingDAOBookingMock.cleanup();
     }

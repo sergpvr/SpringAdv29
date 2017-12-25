@@ -27,7 +27,8 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET, headers="Accept=text/html")
     public String getUsers(@ModelAttribute("model") ModelMap model) {
-        model.addAttribute("userList", userService.getAll());
+        List<User> userList = userService.getAll();
+        model.addAttribute("userList", userList);
         //model.addAttribute("userAccounts", userService.getUserAccounts());
         return "users";
     }

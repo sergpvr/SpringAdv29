@@ -44,6 +44,11 @@ public class UserDAOImpl extends AbstractDAO implements UserDAO {
     }
 
     @Override
+    public User update(User user) {
+        return ((User) getCurrentSession().merge(user));
+    }
+
+    @Override
     public User getByEmail(String email) {
         return ((User) createBlankCriteria(User.class).add(Restrictions.eq("email", email)).uniqueResult());
     }

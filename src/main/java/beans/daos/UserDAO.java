@@ -19,6 +19,8 @@ public interface UserDAO {
 
     User get(long id);
 
+    User update(User user);
+
     User getByEmail(String email);
 
     List<User> getAllByName(String name);
