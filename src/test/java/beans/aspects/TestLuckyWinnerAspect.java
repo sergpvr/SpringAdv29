@@ -13,6 +13,7 @@ import beans.models.User;
 import beans.services.BookingService;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +79,7 @@ public class TestLuckyWinnerAspect {
         bookingDAOBookingMock.cleanup();
     }
 
+    @Ignore
     @Test
     public void testCalculateDiscount() {
         User user = (User) applicationContext.getBean("testUser1");

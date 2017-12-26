@@ -128,6 +128,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    @Transactional
     public Ticket bookTicket(User user, Ticket ticket) {
         if (Objects.isNull(user)) {
             throw new NullPointerException("User is [null]");
@@ -147,11 +148,11 @@ public class BookingServiceImpl implements BookingService {
                 throw new IllegalStateException("Unable to book ticket: [" + ticket + "]. Please, refill user account.");
             }
             bookingDAO.create(user, ticket);
-            //user.getUserAccount().setAmount(  user.getUserAccount().getAmount() - ticket.getPrice() );
             userService.refillAccount(user.getId(), - ticket.getPrice());
         }
-        else
+        else {
             throw new IllegalStateException("Unable to book ticket: [" + ticket + "]. Seats are already booked.");
+        }
 
         return ticket;
     }

@@ -17,6 +17,7 @@ import beans.services.discount.BirthdayStrategy;
 import beans.services.discount.TicketsStrategy;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,6 +88,7 @@ public class TestDiscountAspect {
         bookingDAOBookingMock.cleanup();
     }
 
+    @Ignore
     @Test
     public void testCalculateDiscount() {
         Event event = (Event) applicationContext.getBean("testEvent1");
