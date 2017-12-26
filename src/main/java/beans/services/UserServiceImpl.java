@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
         User user = userDAO.get(userId);
         UserAccount userAccount = user.getUserAccount();
         if(userAccount == null) {
-            user.setUserAccount(new UserAccount(user, amount));
+            user.setUserAccount(userAccountDAO.create(new UserAccount(user, amount)));
         }  else {
             userAccount.setAmount(userAccount.getAmount() + amount);
         }

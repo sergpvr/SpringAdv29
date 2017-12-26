@@ -165,7 +165,10 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <path>/spring-course</path>
+                    <path>/</path>
+                    <mode>context</mode>
+                    <charset>UTF-8</charset>
+                    <warDirectory>target/${project.artifactId}-${project.version}</warDirectory>
                 </configuration>
             </plugin>
         </plugins>

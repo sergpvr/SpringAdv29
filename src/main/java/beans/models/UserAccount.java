@@ -80,7 +80,7 @@ public class UserAccount {
         return "UserAccount{" +
                 "id=" + id +
                 ", user" + user.getEmail() +
-                ", account=" + amount +
+                ", amount=" + amount +
                 '}';
     }
 }

@@ -12,10 +12,10 @@
 
 <hibernate-mapping package="beans.models">
 
-    <class name="UserAccount" table="USER_ACCOUNT">
+    <class name="UserAccount" table="userAccount">
         <id name="id" column="ID">
             <generator class="foreign">
-                <param name="property">USER</param>
+                <param name="property">user</param>
             </generator>
         </id>
         <one-to-one name="user" class="beans.models.User" constrained="true" />

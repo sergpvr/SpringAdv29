@@ -45,7 +45,7 @@
                 <td>${user.email}</td>
                 <td>${(user.birthday)!}</td>
                 <td>${(user.roles)!}</td>
-                <td>${(user.userAccount.account)!}</td>
+                <td>${(user.userAccount.amount)!}</td>
                 <td><a href="deleteUser?userId=${user.id}">delete</a></td>
             </tr>
             </#list>
