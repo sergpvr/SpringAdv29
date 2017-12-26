@@ -15,6 +15,7 @@ import beans.services.BookingService;
 import beans.services.EventService;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,6 +119,7 @@ public class TestCounterAspect {
         assertEquals(expected, CounterAspect.getGetPriceByNameStat());
     }
 
+    @Ignore
     @Test
     public void testBookTicketByName() {
         User user = (User) applicationContext.getBean("testUser1");

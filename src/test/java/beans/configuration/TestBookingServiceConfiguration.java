@@ -78,8 +78,18 @@ public class TestBookingServiceConfiguration {
     }
 
     @Bean
+    public UserAccount testUserAccount1() {
+        return new UserAccount(testUser1(), 10000.00);
+    }
+
+    @Bean
     public User testUser2() {
         return new User(1, "laory@yandex.ru", "Dmytro Babichev", java.time.LocalDate.of(1992, 4, 29), "REGISTERED_USER", "");
+    }
+
+    @Bean
+    public UserAccount testUserAccount2() {
+        return new UserAccount(testUser2(), 10000.00);
     }
 
     @Bean
@@ -127,7 +137,7 @@ public class TestBookingServiceConfiguration {
 
     @Bean
     public UserAccountDAO userAccountDAOMock() {
-        return null;
+        return new UserAccountDAOMock(Arrays.asList(testUserAccount1(), testUserAccount2()));
     }
 
     @Bean

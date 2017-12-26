@@ -141,8 +141,15 @@ public class BookingServiceImpl implements BookingService {
         boolean seatsAreAlreadyBooked = bookedTickets.stream().filter(bookedTicket -> ticket.getSeatsList().stream().filter(
                 bookedTicket.getSeatsList() :: contains).findAny().isPresent()).findAny().isPresent();
 
-        if (!seatsAreAlreadyBooked)
+        if (!seatsAreAlreadyBooked) {
+            //check money
+            if (user.getUserAccount() == null || user.getUserAccount().getAmount() < ticket.getPrice()) {
+                throw new IllegalStateException("Unable to book ticket: [" + ticket + "]. Please, refill user account.");
+            }
             bookingDAO.create(user, ticket);
+            //user.getUserAccount().setAmount(  user.getUserAccount().getAmount() - ticket.getPrice() );
+            userService.refillAccount(user.getId(), - ticket.getPrice());
+        }
         else
             throw new IllegalStateException("Unable to book ticket: [" + ticket + "]. Seats are already booked.");
 
