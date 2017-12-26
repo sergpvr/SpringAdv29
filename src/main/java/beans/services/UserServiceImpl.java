@@ -63,20 +63,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void refillAccount(long userId, double amount) {
-        /*UserAccount userAccount = userAccountDAO.getByUserId(userId);
-        if(userAccount == null) {
-            userAccount = userAccountDAO.create(new UserAccount(userId, amount));
-        } else {
-            userAccount.setAccount(userAccount.getAccount() + amount);
-            userAccountDAO.update(userAccount);
-        }*/
         User user = userDAO.get(userId);
-        UserAccount userAccountF = user.getUserAccount();
-        if(userAccountF == null) {
-            user.setUserAccount(new UserAccount(userId, amount));
-            userDAO.update(user);
+        UserAccount userAccount = user.getUserAccount();
+        if(userAccount == null) {
+            user.setUserAccount(new UserAccount(user, amount));
+        }  else {
+            userAccount.setAmount(userAccount.getAmount() + amount);
         }
-
+        userDAO.update(user);
     }
 
     @Override

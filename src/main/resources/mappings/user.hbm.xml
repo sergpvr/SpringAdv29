@@ -21,7 +21,7 @@
         <property name="birthday" type="java.time.LocalDate" column="EVENT_DATE"/>
         <property name="roles"  column="ROLES" type="string"/>
         <property name="password"  column="PASSWORD" type="string"/>
-        <one-to-one name="userAccount" class="beans.models.UserAccount" fetch="join" lazy="false"/>
+        <one-to-one name="userAccount" class="beans.models.UserAccount" cascade="save-update" fetch="join" lazy="false" />
     </class>
 
 </hibernate-mapping>

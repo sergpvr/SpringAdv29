@@ -15,10 +15,10 @@ public class UserAccountDAOImpl extends AbstractDAO implements UserAccountDAO {
     @Override
     public UserAccount create(UserAccount userAccount) {
         UserAccountDAO.validateUserAccount(userAccount);
-        if (getByUserId(userAccount.getUserId()) != null) {
+        if (userAccount.getId() != -1) {
             throw new IllegalStateException(
                     String.format("Unable to store userAccount: [%s]. UserAccount with userId: [%d] is already created.",
-                            userAccount, userAccount.getUserId()));
+                            userAccount, userAccount.getId()));
         } else {
             Long userId = (Long) getCurrentSession().save(userAccount);
             return userAccount.withId(userId);
@@ -33,12 +33,6 @@ public class UserAccountDAOImpl extends AbstractDAO implements UserAccountDAO {
     @Override
     public UserAccount get(long id) {
         return (UserAccount) getCurrentSession().get(UserAccount.class, id);
-    }
-
-    @Override
-    public UserAccount getByUserId(long userId) {
-        return ((UserAccount) createBlankCriteria(UserAccount.class)
-                .add(Restrictions.eq("userId", userId)).uniqueResult());
     }
 
     @Override

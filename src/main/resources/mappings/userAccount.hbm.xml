@@ -14,10 +14,12 @@
 
     <class name="UserAccount" table="USER_ACCOUNT">
         <id name="id" column="ID">
-            <generator class="identity"/>
+            <generator class="foreign">
+                <param name="property">USER</param>
+            </generator>
         </id>
-        <property name="userId" column="USER_ID" type="long"/>
-        <property name="account" column="AMOUNT" type="double"/>
+        <one-to-one name="user" class="beans.models.User" constrained="true" />
+        <property name="amount" column="AMOUNT" type="double"/>
     </class>
 
 </hibernate-mapping>

@@ -8,24 +8,24 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class UserAccount {
     private long   id;
-    private long userId;
-    private double account;
+    private User user;
+    private double amount;
 
     public UserAccount() {
     }
 
-    public UserAccount(long id, long userId, double account) {
+    public UserAccount(long id, User user, double amount) {
         this.id = id;
-        this.userId = userId;
-        this.account = account;
+        this.user = user;
+        this.amount = amount;
     }
 
-    public UserAccount(long userId, double account) {
-        this(-1, userId, account);
+    public UserAccount(User user, double account) {
+        this(-1, user, account);
     }
 
     public UserAccount withId(long id) {
-        return new UserAccount(id, userId, account);
+        return new UserAccount(id, user, amount);
     }
 
     public long getId() {
@@ -36,20 +36,20 @@ public class UserAccount {
         this.id = id;
     }
 
-    public long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public double getAccount() {
-        return account;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setAccount(double account) {
-        this.account = account;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     @Override
@@ -60,8 +60,8 @@ public class UserAccount {
         UserAccount that = (UserAccount) o;
 
         if (id != that.id) return false;
-        if (userId != that.userId) return false;
-        return Double.compare(that.account, account) == 0;
+        if (user != that.user) return false;
+        return Double.compare(that.amount, amount) == 0;
     }
 
     @Override
@@ -69,8 +69,8 @@ public class UserAccount {
         int result;
         long temp;
         result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (userId ^ (userId >>> 32));
-        temp = Double.doubleToLongBits(account);
+        result = 31 * result + user.hashCode();
+        temp = Double.doubleToLongBits(amount);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
@@ -79,8 +79,8 @@ public class UserAccount {
     public String toString() {
         return "UserAccount{" +
                 "id=" + id +
-                ", userId=" + userId +
-                ", account=" + account +
+                ", user" + user.getEmail() +
+                ", account=" + amount +
                 '}';
     }
 }

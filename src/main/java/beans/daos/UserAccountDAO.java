@@ -12,8 +12,6 @@ public interface UserAccountDAO {
 
     UserAccount get(long id);
 
-    UserAccount getByUserId(long userId);
-
     UserAccount update(UserAccount userAccount);
 
     List<UserAccount> getAll();
@@ -22,12 +20,10 @@ public interface UserAccountDAO {
         if (Objects.isNull(userAccount)) {
             throw new NullPointerException("UserAccount is [null]");
         }
-        if (Objects.isNull(userAccount.getUserId())) {
-            throw new NullPointerException("UserAccount's userId is [null]. UserAccount: [" + userAccount + "]");
+        if (Objects.isNull(userAccount.getUser())) {
+            throw new NullPointerException("UserAccount's user is [null]. UserAccount: [" + userAccount + "]");
         }
-        if (Objects.isNull(userAccount.getAccount())) {
-            throw new NullPointerException("UserAccount's account is [null]. UserAccount: [" + userAccount + "]");
-        }
+
     }
 
 }
