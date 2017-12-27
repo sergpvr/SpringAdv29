@@ -14,6 +14,16 @@
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="false">
+            <bean id="jsonHttpMessageConverter"
+                  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+            <bean id="xmlHttpMessageConverter"
+                  class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
+        </mvc:message-converters>
+
+    </mvc:annotation-driven>
+
     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath">
             <value>/WEB-INF/views/ftl/</value>
@@ -46,6 +56,35 @@
         <property name="defaultErrorView" value="exceptionView"/>
         <property name="exceptionAttribute" value="exception"/>
 
+    </bean>
+
+    <bean id="contentNegotiationManager"  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="true" />
+        <property name="ignoreAcceptHeader" value="true"/>
+        <property name="useJaf" value="false"/>
+        <property name="defaultContentType" value="text/html" />
+
+        <property name="mediaTypes">
+            <map>
+                <entry key="html" value="text/html"/>
+                <entry key="json" value="application/json"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+        <property name="viewResolvers">
+            <list>
+                <bean id="viewResolver"
+                      class="org.springframework.web.servlet.view.InternalResourceViewResolver"   />
+            </list>
+        </property>
+        <property name="defaultViews">
+            <list>
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+            </list>
+        </property>
     </bean>
 
     <!-- File Upload bean config -->
